@@ -20,8 +20,12 @@ export async function GET() {
             headers: { "Content-Type": "application/json" },
             status: 200
         });
-    } catch (error: any) {
-        console.error("API Fetch Error:", error.message);
-        return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    } catch (error: unknown) {
+        let errorMessage = "Unknown error occurred";
+        if (error instanceof Error) {
+            errorMessage = error.message;
+        }
+        console.error("API Fetch Error:", errorMessage);
+        return new Response(JSON.stringify({ error: errorMessage }), { status: 500 });
     }
 }
