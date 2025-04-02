@@ -21,7 +21,7 @@ export default function Home() {
 
             const iconsets = await rawData.json();
 
-            const newData = iconsets.map((item: any) => {
+            const newData = iconsets.map((item: Contents) => {
                 const cur: Contents = {
                     iconset_id: item.iconset_id,
                     name: item.name,
